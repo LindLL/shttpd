@@ -1,0 +1,17 @@
+# Makefile for shttpd
+
+CC = gcc
+CFLAGS = -g
+
+SRCS = shttpd.c shttpd_para.c shttpd_log.c
+OBJS = $(SRCS:.c=.o)
+
+shttpd: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJS) shttpd
+
